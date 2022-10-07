@@ -57,7 +57,11 @@
             </tr>
            </thead>
            <tbody>
-             
+             <tr id="tabl">
+                <td id="tdname"></td>
+                <td id="tditemname"></td>
+                <td id="tditemprice"></td>
+            </tr>
            </tbody>
         </table>
 
@@ -80,12 +84,21 @@ comenzar a cargar todos los datos a una tabla html por medio de un ciclo -->
 
         const mostrarData = (data) => {
             console.log(data)
-            let body = ''
-            for (let i = 0; i<data.length; i++){
-                body += `<tr><td>${data['stores'][i]["item"].name}</td><td>${data['stores'][i]['item'][i].name}</td><td>${data['stores'][i]['item'][i].price}</td></tr>`
+            let tdname = ''
+            let tditemname = ''
+            let tditemprice = ''
+            for (let i = 0; i<data['stores'].length; i++){
+                tdname += `${data['stores'][i]['name']}`
+                for(let j = 0; j<data['stores'][i]['item'].length; j++){
+                    tditemname = `${data['stores'][i]['item'][j]['name']}`
+                    tditemprice = `${data['stores'][i]['item'][j]['price']}`
+                }
             }
 
-            document.getElementById('data').innerHTML = body
+            document.getElementById('tdname').innerHTML = tdname
+            document.getElementById('tditemname').innerHTML = tditemname
+            document.getElementById('tditemprice').innerHTML = tditemprice
+
 
         }
 
